@@ -4,6 +4,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import JobDerails from "../Pages/JobDetails/JobDerails";
 import MyBid from "../Pages/MyBid/MyBid";
+import BidRequest from "../Pages/BidRequest/BidRequest";
+import AddJob from "../Pages/AddJob/AddJob";
 
 
 export const router = createBrowserRouter([
@@ -25,6 +27,14 @@ export const router = createBrowserRouter([
         {
           path:"/mybid",
           element:<MyBid></MyBid>
+        },
+        {
+          path:"/bidrequest",
+          element:<BidRequest></BidRequest>
+        },
+        {
+          path:"/addjob",
+          element:<AddJob></AddJob>
         }
       ]
     },

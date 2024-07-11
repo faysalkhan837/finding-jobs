@@ -1,7 +1,7 @@
 import SectionTitle from "../../Share/SectionTitle/SectionTitle";
 
-const MyBid = () => {
-    const title = "Find your bids"
+const BidRequest = () => {
+  const title = "All request bids";
   return (
     <div>
       <div>
@@ -39,8 +39,18 @@ const MyBid = () => {
                         scope="col"
                         className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                       >
+                        Price
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      >
                         status
                       </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      ></th>
                       <th
                         scope="col"
                         className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
@@ -65,6 +75,9 @@ const MyBid = () => {
                         </p>
                       </td>
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                        <p className="text-gray-900 whitespace-no-wrap">1000</p>
+                      </td>
+                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                         <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
                           <span
                             aria-hidden="true"
@@ -74,8 +87,13 @@ const MyBid = () => {
                         </span>
                       </td>
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <button className="bg-blue-700 p-2 rounded-lg text-white">
-                          Complete
+                        <button className="bg-green-700 p-2 rounded-lg text-white">
+                          Accept
+                        </button>
+                      </td>
+                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                        <button className="bg-red-600 p-2 rounded-lg text-white">
+                          Reject
                         </button>
                       </td>
                     </tr>
@@ -90,4 +108,4 @@ const MyBid = () => {
   );
 };
 
-export default MyBid;
+export default BidRequest;

@@ -12,8 +12,8 @@ const JobBox = ({ items }) => {
                         <h1 className="text-lg text-center h-14"><b>{item.job_title}</b></h1>
                         <div className="text-start py-2">
                             <h2><b>Deadline:</b> {item.deadline}</h2>
-                            <h2><b>Price range:</b> $ {item.minimum_price} to $ {item.maximum_price}</h2>
-                            <p className="mt-2 h-32"><b>Description:</b> {item.short_details}</p>
+                            <h2><b>Price range:</b><br />   <span className="text-center block">$ {item.minimum_price} to $ {item.maximum_price}</span></h2>
+                            <p className="mt-2 h-36"><b>Description:</b> {item.short_details}</p>
                         </div>
                         <div className="flex items-center justify-between w-full gap-4">
                             <Link className="w-full" to={`/jobdetail/${item._id}`}>

@@ -10,10 +10,10 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const navLinks = [
         { id: 1, name: "home", patch: "/" },
-        { id: 2, name: "Add Job", patch: "/" },
+        { id: 2, name: "Add Job", patch: "/addjob" },
         { id: 3, name: "My posted job", patch: "/" },
         { id: 4, name: "My Bids", patch: "/mybid" },
-        { id: 5, name: "Bid Request", patch: "/" },
+        { id: 5, name: "Bid Request", patch: "bidrequest/" },
     ]
     return (
         <div className="containerr fixed flex items-center text-white justify-between hover:bg-slate-900 duration-500 z-10 max-w-7xl h-20 px-3 py-1">
