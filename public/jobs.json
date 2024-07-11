@@ -1,0 +1,123 @@
+[
+    {
+      "job_title": "Front-End Web Developer",
+      "deadline": "2024-07-30",
+      "maximum_price": 3000,
+      "minimum_price": 1500,
+      "short_details": "Looking for a skilled front-end developer proficient in React and Redux to build a dynamic web application.",
+      "name": "Tech Innovators Inc.",
+      "category": "Web Development",
+      "email": "hr@techinnovators.com"
+    },
+    {
+      "job_title": "Full Stack Developer",
+      "deadline": "2024-08-15",
+      "maximum_price": 5000,
+      "minimum_price": 2500,
+      "short_details": "We need a full stack developer with experience in Node.js, Express, and MongoDB to develop a scalable web platform.",
+      "name": "Creative Solutions Ltd.",
+      "category": "Web Development",
+      "email": "jobs@creativesolutions.com"
+    },
+    {
+      "job_title": "Back-End Developer",
+      "deadline": "2024-07-25",
+      "maximum_price": 3500,
+      "minimum_price": 2000,
+      "short_details": "Seeking an experienced back-end developer to optimize and enhance our existing API using Python and Django.",
+      "name": "DataWorks Corp.",
+      "category": "Web Development",
+      "email": "careers@dataworks.com"
+    },
+    {
+      "job_title": "UI/UX Designer & Developer",
+      "deadline": "2024-08-10",
+      "maximum_price": 4000,
+      "minimum_price": 1800,
+      "short_details": "Looking for a creative UI/UX designer with development skills in HTML, CSS, and JavaScript to improve our web interface.",
+      "name": "Bright Ideas LLC",
+      "category": "Web Development",
+      "email": "contact@brightideas.com"
+    },
+    {
+      "job_title": "Digital Marketing Specialist",
+      "deadline": "2024-07-31",
+      "maximum_price": 2500,
+      "minimum_price": 1200,
+      "short_details": "Seeking a digital marketing specialist to manage our social media channels and run paid ad campaigns.",
+      "name": "Marketing Pros Ltd.",
+      "category": "Digital Marketing",
+      "email": "jobs@marketingpros.com"
+    },
+    {
+      "job_title": "SEO Expert",
+      "deadline": "2024-08-05",
+      "maximum_price": 2000,
+      "minimum_price": 1000,
+      "short_details": "Looking for an SEO expert to optimize our website content and improve our search engine rankings.",
+      "name": "SEO Solutions Inc.",
+      "category": "Digital Marketing",
+      "email": "careers@seosolutions.com"
+    },
+    {
+      "job_title": "Content Marketing Manager",
+      "deadline": "2024-08-20",
+      "maximum_price": 3000,
+      "minimum_price": 1500,
+      "short_details": "We need a content marketing manager to develop and execute our content strategy, including blog posts and social media.",
+      "name": "Creative Content Co.",
+      "category": "Digital Marketing",
+      "email": "apply@creativecontent.com"
+    },
+    {
+      "job_title": "Email Marketing Specialist",
+      "deadline": "2024-07-28",
+      "maximum_price": 2200,
+      "minimum_price": 1100,
+      "short_details": "Looking for an email marketing specialist to create and manage email campaigns to boost customer engagement.",
+      "name": "Email Experts LLC",
+      "category": "Digital Marketing",
+      "email": "contact@emailexperts.com"
+    },
+    {
+      "job_title": "Graphic Designer",
+      "deadline": "2024-08-01",
+      "maximum_price": 1500,
+      "minimum_price": 800,
+      "short_details": "Looking for a creative graphic designer to create visual concepts and promotional materials.",
+      "name": "Creative Designs Co.",
+      "category": "Graphics Design",
+      "email": "hr@creativedesigns.com"
+    },
+    {
+      "job_title": "UI/UX Designer",
+      "deadline": "2024-08-10",
+      "maximum_price": 3000,
+      "minimum_price": 1500,
+      "short_details": "Seeking a UI/UX designer to develop user-friendly interfaces for our web and mobile applications.",
+      "name": "Tech Interface Ltd.",
+      "category": "Graphics Design",
+      "email": "jobs@techinterface.com"
+    },
+    {
+      "job_title": "Brand Identity Designer",
+      "deadline": "2024-07-25",
+      "maximum_price": 2000,
+      "minimum_price": 1200,
+      "short_details": "We need a brand identity designer to create a cohesive brand identity for our new product line.",
+      "name": "Brand Builders Inc.",
+      "category": "Graphics Design",
+      "email": "careers@brandbuilders.com"
+    },
+    {
+      "job_title": "Illustrator",
+      "deadline": "2024-08-15",
+      "maximum_price": 1800,
+      "minimum_price": 1000,
+      "short_details": "Looking for an illustrator to create custom illustrations for our marketing materials and website.",
+      "name": "Illustration Hub",
+      "category": "Graphics Design",
+      "email": "apply@illustrationhub.com"
+    }
+  ]
+  
