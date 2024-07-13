@@ -9,7 +9,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const {user} = useContext(AuthContext);
+    const {user, logOut} = useContext(AuthContext);
     const navLinks = [
         { id: 1, name: "home", patch: "/" },
         { id: 2, name: "Add Job", patch: "/addjob" },
@@ -17,6 +17,12 @@ const Navbar = () => {
         { id: 4, name: "My Bids", patch: "/mybid" },
         { id: 5, name: "Bid Request", patch: "bidrequest/" },
     ]
+    const handleLogOut = () =>{
+        logOut()
+        .then(()=>{})
+        .catch(error => console.log(error))
+    }
+
     return (
         <div className="containerr fixed flex items-center text-white justify-between hover:bg-slate-900 duration-500 z-10 max-w-7xl h-20 px-3 py-1">
             <div className="flex items-center">
@@ -37,8 +43,13 @@ const Navbar = () => {
                 </div>
             </div>
             <div>
-                <Link to='/signUp'><button className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Log out</button></Link>
-                <Link to='/signUp'><button className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Login</button></Link>
+            {
+                user ? <button onClick={handleLogOut} className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Log out</button> : 
+
+                <Link to='/login'><button className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Login</button></Link>
+            }
+                
+                
             </div>
         </div>
     );

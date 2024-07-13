@@ -1,55 +1,37 @@
-import "./signup.css";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { useContext } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Component/SocialLogin/SocialLogin";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
-const SignUp = () => {
-  const { creatUser, updateUserProfile } = useContext(AuthContext);
-  const navigate = useNavigate();
 
-  const handleSignup = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const photo = form.photo.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(name, password, photo, email);
+const Login = () => {
+    const {signInUser} = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    creatUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        updateUserProfile(name, photo).then(() => {
-          const userInfo = {
-            name: name,
-            email: email,
-          };
-          axios
-            .post("http://localhost:5000/users", userInfo)
-            .then((res) => {
-              console.log(res);
-              if (res.data.insertedId) {
+    const handleLogin = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(email, password)
+        signInUser(email, password)
+        .then(result => {
+            if(result.user){
                 Swal.fire({
-                  position: "middle",
-                  icon: "success",
-                  title: "user create successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-              }
-              navigate('/');
-            })
-            .catch((error) => console.log(error));
-        });
-      })
-      .catch((error) => console.log(error));
-  };
-
-  return (
-    <div className="flex md:p-10 justify-center py-2">
+                    position: "middle",
+                    icon: "success",
+                    title: "You are sucessfully loged In",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+            }
+            navigate('/')
+        })
+        .catch(error => console.log(error))
+    }
+    return (
+        <div className="flex md:p-10 justify-center py-2">
       <div className=" w-1/2 lg:flex justify-center items-center hidden">
         <img
           src="/signup12.png"
@@ -58,39 +40,8 @@ const SignUp = () => {
       </div>
       <div className=" md:w-1/2 flex md:justify-end justify-center ">
         <div className=" max-w-md md:px-8 p-2 space-y-3 rounded-xl bg-slate-100 text-slate-900 flex flex-col justify-center shadow-md shadow-slate-400">
-          <h1 className="text-2xl font-bold text-center">Sign Up</h1>
-          <form onSubmit={handleSignup} className="space-y-3">
-            <div className="space-y-1 text-sm">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-neutral-600"
-              >
-                Name
-              </label>
-              <input
-                autoComplete="name"
-                id="name"
-                type="text"
-                name="name"
-                placeholder="name"
-                className="w-full px-4 py-3 rounded-lg border-gray-700 text-gray-500 focus:border-violet-400"
-              />
-            </div>
-            <div className="space-y-1 text-sm">
-              <label
-                htmlFor="photo"
-                className="block text-sm font-medium text-neutral-600"
-              >
-                Photo Url
-              </label>
-              <input
-                id="photo"
-                type="text"
-                name="photo"
-                placeholder="photo url"
-                className="w-full px-4 py-3 rounded-lg border-gray-700 text-gray-500 focus:border-violet-400"
-              />
-            </div>
+          <h1 className="text-2xl font-bold text-center">LogIn</h1>
+          <form onSubmit={handleLogin} className="space-y-3">
             <div className="space-y-1 text-sm">
               <label
                 htmlFor="email"
@@ -132,7 +83,7 @@ const SignUp = () => {
               className="block w-full p-3 text-center text-white  bg-indigo-600 hover:bg-indigo-700 rounded-lg"
               type="submit"
             >
-              Sign Up
+              Login
             </button>
           </form>
           <div className="flex items-center pt-2 space-x-1">
@@ -143,12 +94,7 @@ const SignUp = () => {
             <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
           </div>
           <div className="flex justify-center space-x-4">
-            {/* <button aria-label="Log in with Google" className="p-1 rounded-sm">
-              <img
-                src="/google.png"
-                className=" shadow-md shadow-slate-400 bg-white rounded-xl"
-              />
-            </button> */}
+            
             <SocialLogin></SocialLogin>
             <button aria-label="Log in with Twitter" className="p-1 rounded-sm">
               <img
@@ -164,12 +110,12 @@ const SignUp = () => {
             </button>
           </div>
           <p className="text-sm text-center sm:px-6 text-gray-400">
-            Already have an account? go to <Link to="/login"><span className="text-blue-500">Login</span></Link>
+            Are you new hare? go to <Link to="/signUp"><span className="text-blue-500">Sign Up</span></Link>
           </p>
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default SignUp;
+export default Login;
