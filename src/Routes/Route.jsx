@@ -6,6 +6,7 @@ import JobDerails from "../Pages/JobDetails/JobDerails";
 import MyBid from "../Pages/MyBid/MyBid";
 import BidRequest from "../Pages/BidRequest/BidRequest";
 import AddJob from "../Pages/AddJob/AddJob";
+import SignUp from "../Pages/SignUp/SignUp";
 
 
 export const router = createBrowserRouter([
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
         {
           path:"/addjob",
           element:<AddJob></AddJob>
+        },
+        {
+          path:"/signUp",
+          element:<SignUp></SignUp>
         }
       ]
     },

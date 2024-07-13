@@ -3,11 +3,13 @@ import "./nav.css"
 import NavLinks from "../NavLinks/NavLinks";
 import { Link } from "react-router-dom";
 import { LuMenuSquare } from "react-icons/lu";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaRegWindowClose } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const {user} = useContext(AuthContext);
     const navLinks = [
         { id: 1, name: "home", patch: "/" },
         { id: 2, name: "Add Job", patch: "/addjob" },
@@ -35,7 +37,8 @@ const Navbar = () => {
                 </div>
             </div>
             <div>
-                <Link to='/login'><button className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Login</button></Link>
+                <Link to='/signUp'><button className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Log out</button></Link>
+                <Link to='/signUp'><button className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Login</button></Link>
             </div>
         </div>
     );
