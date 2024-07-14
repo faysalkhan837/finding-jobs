@@ -13,7 +13,7 @@ const Navbar = () => {
     const navLinks = [
         { id: 1, name: "home", patch: "/" },
         { id: 2, name: "Add Job", patch: "/addjob" },
-        { id: 3, name: "My posted job", patch: "/" },
+        { id: 3, name: "My posted job", patch: "/myPostedJob" },
         { id: 4, name: "My Bids", patch: "/mybid" },
         { id: 5, name: "Bid Request", patch: "bidrequest/" },
     ]

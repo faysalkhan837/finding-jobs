@@ -1,8 +1,16 @@
+import { useContext } from "react";
 import SectionTitle from "../../Share/SectionTitle/SectionTitle";
+import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const AddJob = () => {
+    const navigate = useNavigate();
     const title = "Add your jobs hare"
+    const {user} = useContext(AuthContext);
+    console.log(user)
 
     const handleAddJobs = event =>{
         event.preventDefault();
@@ -16,9 +24,26 @@ const AddJob = () => {
         const category = form.category.value;
         const email = form.email.value;
         const addJobInfo = {job_title, deadline, maximum_price, minimum_price, short_details, name, category, email}
-        console.log(addJobInfo)
-    }
+        // console.log(addJobInfo)
 
+        axios.post("http://localhost:5000/jobData",addJobInfo)
+         .then(res =>{
+            if(res.data.insertedId){
+                Swal.fire({
+                    position: "middle",
+                    icon: "success",
+                    title: "Your job is been added sucessfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+            }
+            // this function is for delay the time to go to another route
+            setTimeout(()=>{
+                navigate('/myPostedJob')
+            }, 2000)
+         })
+         .catch(error => console.log(error))
+    }
 
 
     return (
@@ -32,7 +57,7 @@ const AddJob = () => {
                     <form onSubmit={handleAddJobs}>
                         <div className="my-2">
                             <label htmlFor="email" className="block text-sm text-gray-500 ">Employer email</label>
-                            <input readOnly defaultValue={"fay@koy.com"} type="text" name="email" placeholder="Your email" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
+                            <input readOnly defaultValue={user?.email} type="text" name="email" placeholder="Your email" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
                         </div>
                         <div className="my-2">
                             <label htmlFor="title" className="block text-sm text-gray-500 ">Job title</label>
@@ -44,7 +69,7 @@ const AddJob = () => {
                         </div>
                         <div className="my-2">
                             <label htmlFor="deadline" className="block text-sm text-gray-500 ">Deadline </label>
-                            <input type="date" name="deadline" placeholder="" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
+                            <input type="date" name="deadline" placeholder="" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-stone-800" />
                         </div>
                         <div className="my-2">
                             <label htmlFor="description" className="block text-sm text-gray-500 ">Description</label>

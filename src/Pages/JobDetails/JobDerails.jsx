@@ -57,11 +57,11 @@ const JobDerails = () => {
                     <form onSubmit={handleBidForm}>
                         <div className="my-2">
                             <label htmlFor="price" className="block text-sm text-gray-500 ">Price</label>
-                            <input type="number" name="price" placeholder="Your price" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
+                            <input type="number" name="price" required placeholder="Your price" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
                         </div>
                         <div className="my-2">
                             <label htmlFor="deadline" className="block text-sm text-gray-500 ">Deadline </label>
-                            <input type="date" name="deadline" placeholder="" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
+                            <input type="date" name="deadline" required placeholder="" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
                         </div>
                         <div className="my-2">
                             <label htmlFor="userEmail" className="block text-sm text-gray-500 ">User Email</label>
