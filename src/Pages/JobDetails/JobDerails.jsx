@@ -4,7 +4,10 @@ import "./jobDetails.css"
 import axios from "axios";
 import Swal from "sweetalert2";
 
+
 const JobDerails = () => {
+
+  
     const navigate = useNavigate();
     const detailsJob = useLoaderData();
     const title = "Details of Job";
@@ -71,7 +74,8 @@ const JobDerails = () => {
                             <label htmlFor="Buyeremail" className="block text-sm text-gray-500 ">Buyer Email</label>
                             <input type="text" name="buyeremail" defaultValue={email} readOnly className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
                         </div>
-                        <input className="py-3 px-4 my-3  bg-indigo-600 hover:bg-indigo-700 text-center w-full rounded-lg text-white transition ease-in duration-200" type="submit" value='Bid on the project' />
+                        
+                        <input  className="py-3 px-4 my-3  bg-indigo-600 hover:bg-indigo-700 text-center w-full rounded-lg text-white transition ease-in duration-200" type="submit" value='Bid on the project' />
                     </form>
                 </div>
             </div>

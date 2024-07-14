@@ -4,15 +4,17 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import { Autoplay } from 'swiper/modules';
-import { useLoaderData } from 'react-router-dom';
+// import { useLoaderData } from 'react-router-dom';
 import JobBox from '../../Component/JobBox/JobBox';
 import SectionTitle from '../../Share/SectionTitle/SectionTitle';
+import UseJobsData from '../../Hooks/UseJobsData';
 
 
 
 const Home = () => {
     
-    const jobsData = useLoaderData();
+    const [jobsData] = UseJobsData()
+    // const jobsData = useLoaderData();
     const GraphicsDesign = jobsData.filter(data => data.category === "Graphics Design");
     const DigitalMarketing = jobsData.filter(data => data.category === "Digital Marketing");
     const WebDevelopment = jobsData.filter(data => data.category === "Web Development");

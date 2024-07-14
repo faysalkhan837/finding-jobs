@@ -1,8 +1,7 @@
+
 import { Link } from "react-router-dom";
 
-
 const JobBox = ({ items }) => {
-
 
     return (
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-4">
@@ -17,7 +16,7 @@ const JobBox = ({ items }) => {
                         </div>
                         <div className="flex items-center justify-between w-full gap-4">
                             <Link className="w-full" to={`/jobdetail/${item._id}`}>
-                                <button type="button" className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+                                <button type="button"  className="py-2 px-4 disabled:bg-slate-400 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
                                     Bid Now
                                 </button>
                             </Link>
