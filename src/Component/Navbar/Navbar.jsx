@@ -43,13 +43,14 @@ const Navbar = () => {
                 </div>
             </div>
             <div>
+                <p>{user?.email}</p>
+            <div className="flex justify-end">
             {
                 user ? <button onClick={handleLogOut} className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Log out</button> : 
 
                 <Link to='/login'><button className="px-4 py-2 hover:bg-slate-300 hover:text-black duration-500 rounded-md bg-blue-500">Login</button></Link>
-            }
-                
-                
+            }   
+            </div>
             </div>
         </div>
     );
