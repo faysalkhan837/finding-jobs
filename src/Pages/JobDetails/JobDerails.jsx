@@ -3,17 +3,21 @@ import SectionTitle from "../../Share/SectionTitle/SectionTitle";
 import "./jobDetails.css"
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const JobDerails = () => {
-
-  
+     
     const navigate = useNavigate();
     const detailsJob = useLoaderData();
     const title = "Details of Job";
     const bidForm = "Bid Your Job"
     const { name, deadline, minimum_price, maximum_price, short_details, email } = detailsJob;
-
+    const {user} = useContext(AuthContext);
+    const isExsist = user?.email == email;
+    
+    
     const handleBidForm = event => {
         event.preventDefault();
         const form = event.target;
@@ -75,7 +79,8 @@ const JobDerails = () => {
                             <input type="text" name="buyeremail" defaultValue={email} readOnly className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
                         </div>
                         
-                        <input  className="py-3 px-4 my-3  bg-indigo-600 hover:bg-indigo-700 text-center w-full rounded-lg text-white transition ease-in duration-200" type="submit" value='Bid on the project' />
+                            <input  disabled={isExsist? true : false} className="py-3 px-4 my-3  bg-indigo-600 disabled:bg-slate-300 hover:bg-indigo-700 text-center w-full rounded-lg text-white transition ease-in duration-200" type="submit" value='Bid on the project' />
+                        
                     </form>
                 </div>
             </div>

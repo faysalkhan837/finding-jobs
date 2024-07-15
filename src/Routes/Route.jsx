@@ -9,6 +9,7 @@ import AddJob from "../Pages/AddJob/AddJob";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import MyPostedJob from "../Pages/MyPostedJob/MyPostedJob";
+import EditJob from "../Pages/EditJob/EditJob";
 
 
 export const router = createBrowserRouter([
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
         {
           path:"/myPostedJob",
           element:<MyPostedJob></MyPostedJob>
+        },
+        {
+          path:"/editJob/:id",
+          element:<EditJob></EditJob>
         }
       ]
     },
