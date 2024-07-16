@@ -84,7 +84,7 @@ const EditJob = () => {
                             <input type="number" defaultValue={maximum_price} name="maximam" className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
                         </div>
                         </div>
-                        <input className="py-3 px-4 my-3  bg-indigo-600 hover:bg-indigo-700 text-center w-full rounded-lg text-white transition ease-in duration-200" type="submit" value='Update' />
+                        <input className="py-3 px-4 my-3  bg-indigo-600 hover:bg-indigo-700 text-center w-full rounded-lg text-white transition ease-in duration-200" type="submit" value='Re submit' />
                     </form>
                 </div>
         </div>

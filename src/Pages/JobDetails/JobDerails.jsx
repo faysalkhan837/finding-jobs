@@ -26,13 +26,13 @@ const JobDerails = () => {
         const biderEmail = form.useremail.value;
         const buyerEmail = form.buyeremail.value;
         const bidInfo = { price, deadLine, biderEmail, buyerEmail }
-        console.log(bidInfo)
+        // console.log(bidInfo)
 
         axios.post("http://localhost:5000/bidingData", bidInfo)
             .then(data => {
                 if (data.data.insertedId) {
                     Swal.fire({
-                        position: "middle",
+                        position: "center",
                         icon: "success",
                         title: "Your work has been saved",
                         showConfirmButton: false,

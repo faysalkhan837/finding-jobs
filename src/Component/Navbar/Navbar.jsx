@@ -8,7 +8,7 @@ import { FaRegWindowClose } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const {user, logOut} = useContext(AuthContext);
     const navLinks = [
         { id: 1, name: "home", patch: "/" },
