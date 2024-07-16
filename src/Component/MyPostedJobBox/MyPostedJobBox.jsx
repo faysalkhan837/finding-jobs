@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const MyPostedJobBox = ({ item }) => {
-  console.log(item._id)
+  
   return (
     <div className="w-64 p-4 m-auto bg-white shadow-lg rounded-2xl shadow-black">
       <div className="w-full h-full">

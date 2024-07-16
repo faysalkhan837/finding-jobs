@@ -20,7 +20,7 @@ const MyPostedJob = () => {
     //         return res.data;
     //     }
     // })
-    console.log(myPost)
+   
     return (
         <div>
             <div>

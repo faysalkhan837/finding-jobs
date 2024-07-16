@@ -11,51 +11,52 @@ import Login from "../Pages/Login/Login";
 import MyPostedJob from "../Pages/MyPostedJob/MyPostedJob";
 import EditJob from "../Pages/EditJob/EditJob";
 
-
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      errorElement:<ErrorPage></ErrorPage>,
-      children:[
-        {
-            path:'/',
-            element:<Home></Home>,
-            loader:() => fetch('http://localhost:5000/jobData')
-        },
-        {
-          path:"/jobdetail/:id",
-          element:<JobDerails></JobDerails>,
-          loader: ({params}) => fetch(`http://localhost:5000/jobData/${params.id}`)
-        },
-        {
-          path:"/mybid",
-          element:<MyBid></MyBid>
-        },
-        {
-          path:"/bidrequest",
-          element:<BidRequest></BidRequest>
-        },
-        {
-          path:"/addjob",
-          element:<AddJob></AddJob>
-        },
-        {
-          path:"/signUp",
-          element:<SignUp></SignUp>
-        },
-        {
-          path:"/login",
-          element:<Login></Login>
-        },
-        {
-          path:"/myPostedJob",
-          element:<MyPostedJob></MyPostedJob>
-        },
-        {
-          path:"/editJob/:id",
-          element:<EditJob></EditJob>
-        }
-      ]
-    },
-  ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/jobData"),
+      },
+      {
+        path: "/jobdetail/:id",
+        element: <JobDerails></JobDerails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/jobData/${params.id}`),
+      },
+      {
+        path: "/mybid",
+        element: <MyBid></MyBid>,
+        loader: () => fetch("http://localhost:5000/bidingData"),
+      },
+      {
+        path: "/bidrequest",
+        element: <BidRequest></BidRequest>,
+      },
+      {
+        path: "/addjob",
+        element: <AddJob></AddJob>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/myPostedJob",
+        element: <MyPostedJob></MyPostedJob>,
+      },
+      {
+        path: "/editJob/:id",
+        element: <EditJob></EditJob>,
+      },
+    ],
+  },
+]);

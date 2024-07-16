@@ -30,7 +30,7 @@ const AddJob = () => {
          .then(res =>{
             if(res.data.insertedId){
                 Swal.fire({
-                    position: "middle",
+                    position: "certer",
                     icon: "success",
                     title: "Your job is been added sucessfully",
                     showConfirmButton: false,
