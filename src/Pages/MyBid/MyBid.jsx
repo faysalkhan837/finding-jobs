@@ -1,11 +1,30 @@
-import { useLoaderData } from "react-router-dom";
+import { FaSpinner } from "react-icons/fa6";
 import SectionTitle from "../../Share/SectionTitle/SectionTitle";
 import MybidBox from "../../Component/MybidBox/MybidBox";
+// import { useQuery } from "@tanstack/react-query";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 const MyBid = () => {
+  const [mybidData, setMybidData] = useState([])
+  const {user, loading} = useContext(AuthContext);
   const title = "Find your bids";
-  const mybidData = useLoaderData();
-  console.log(mybidData)
+  // const {data: mybidData, isLoading} = useQuery({ 
+  //   queryKey: ["mybidData", user?.email],
+  //   queryFn: async () =>{
+  //     const res = axios.get(`http://localhost:5000/bidingData?email=${user?.email}`)
+  //     return res.data;
+  //   }
+  // })
+useEffect(()=>{
+  axios.get(`http://localhost:5000/bidingData?email=${user?.email}`)
+  .then(res => setMybidData(res.data))
+  .catch(error =>console.log(error))
+},[user?.email])
+  
+console.log(mybidData)
+
 
 
   return (
@@ -54,6 +73,7 @@ const MyBid = () => {
                     </tr>
                   </thead>
                   {
+                    loading? <FaSpinner className="animate-spin"/> : 
                     mybidData.map(data => <MybidBox key={data._id} data={data}></MybidBox>)
                   }
                 </table>

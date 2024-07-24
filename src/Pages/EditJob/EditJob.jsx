@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SectionTitle from "../../Share/SectionTitle/SectionTitle";
 import UseJobsData from "../../Hooks/UseJobsData";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const EditJob = () => {
     const [jobData] = UseJobsData()
     const title = "You can edit hare"
     const params = useParams();
+    const navigate = useNavigate();
     
     const edeitData = jobData?.find(data => data._id === params.id);
     const {job_title, deadline, maximum_price, minimum_price, short_details, name, category, email} = edeitData;
@@ -27,7 +29,16 @@ const EditJob = () => {
        
 
         axios.patch(`http://localhost:5000/jobData/${params.id}`, editJobInfo)
-        .then(res => console.log(res.data))
+        .then(res => {
+            if(res.data.modifiedCount > 0){
+                Swal.fire({
+                    title: "Edit",
+                    text: "Your file has been Updated.",
+                    icon: "success"
+                  });
+            }
+            navigate("/myPostedJob")
+        })
         .catch(error => console.log(error))
     }
 

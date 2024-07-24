@@ -4,23 +4,25 @@ import { AuthContext } from "../../Provider/AuthProvider";
 // import axios from "axios";
 // import { useQuery } from "@tanstack/react-query";
 import MyPostedJobBox from "../../Component/MyPostedJobBox/MyPostedJobBox";
-import UseJobsData from "../../Hooks/UseJobsData";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+// import UseJobsData from "../../Hooks/UseJobsData";
 
 
 const MyPostedJob = () => {
-    const [jobsData] = UseJobsData();
-    const { user, loading } = useContext(AuthContext);
-    const email = user?.email;
+    // const [jobsData] = UseJobsData();
+    const { user } = useContext(AuthContext);
+    // const email = user?.email;
     const title = "My posted jobs";
-    const myPost = jobsData.filter(data => data.email === email)
-    // const { data: myPost, isLoading } = useQuery({
-    //     queryKey: ["myPost", user?.email],
-    //     queryFn: async () => {
-    //         const res = await axios.get(`http://localhost:5000/jobData?email=${user?.email}`)
-    //         return res.data;
-    //     }
-    // })
-    console.log(myPost)
+    // const myPost = jobsData.filter(data => data.email === email)
+    const { data: myPost,isLoading,refetch} = useQuery({
+        queryKey: ["myPost", user?.email],
+        queryFn: async () => {
+            const res = await axios.get(`http://localhost:5000/jobData?email=${user?.email}`)
+            return res.data;
+        }
+    })
+    // console.log( myPost)
     return (
         <div>
             <div>
@@ -29,8 +31,8 @@ const MyPostedJob = () => {
             <SectionTitle title={title}></SectionTitle>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-4 ">
                 {
-                    loading ? <h1>Loading....</h1> :
-                        myPost.map(post => <MyPostedJobBox key={post._id} item={post}></MyPostedJobBox>)
+                    isLoading ? <h1>Loading....</h1> :
+                        myPost.map(post => <MyPostedJobBox key={post?._id} refetch={refetch} item={post}></MyPostedJobBox>)
                 }
             </div>
         </div>

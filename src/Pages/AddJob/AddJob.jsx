@@ -10,7 +10,7 @@ const AddJob = () => {
     const navigate = useNavigate();
     const title = "Add your jobs hare"
     const {user} = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
 
     const handleAddJobs = event =>{
         event.preventDefault();
