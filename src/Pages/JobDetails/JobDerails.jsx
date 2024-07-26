@@ -13,7 +13,7 @@ const JobDerails = () => {
     const detailsJob = useLoaderData();
     const title = "Details of Job";
     const bidForm = "Bid Your Job"
-    const { name, deadline, minimum_price, maximum_price, short_details, email } = detailsJob;
+    const { name, deadline, minimum_price, maximum_price, short_details, email, job_title, _id } = detailsJob;
     const {user} = useContext(AuthContext);
     const isExsist = user?.email == email;
     
@@ -25,7 +25,7 @@ const JobDerails = () => {
         const deadLine = form.deadline.value;
         const biderEmail = form.useremail.value;
         const buyerEmail = form.buyeremail.value;
-        const bidInfo = { price, deadLine, biderEmail, buyerEmail }
+        const bidInfo = { price, deadLine, biderEmail, buyerEmail, job_title, id:_id }
         // console.log(bidInfo)
 
         axios.post("http://localhost:5000/bidingData", bidInfo)
@@ -72,7 +72,7 @@ const JobDerails = () => {
                         </div>
                         <div className="my-2">
                             <label htmlFor="userEmail" className="block text-sm text-gray-500 ">User Email</label>
-                            <input type="text" name="useremail" defaultValue="fay.koy@gmail.com" readOnly className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
+                            <input type="text" name="useremail" defaultValue={user.email} readOnly className="block  mt-2 w-full placeholder-gray-400/70  rounded-lg border border-orange-300 bg-white px-5 py-2.5 text-gray-700" />
                         </div>
                         <div className="my-2">
                             <label htmlFor="Buyeremail" className="block text-sm text-gray-500 ">Buyer Email</label>

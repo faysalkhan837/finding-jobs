@@ -1,10 +1,10 @@
 const MybidBox = ({data}) => {
 
   return (
-    <tbody>
+    <tbody className="border-t-slate-300 border-t-[3px]">
       <tr>
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-          <p className="text-gray-900 whitespace-no-wrap">Jean marc</p>
+          <p className="text-gray-900 whitespace-no-wrap">{data.job_title}</p>
         </td>
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
           <p className="text-gray-900 whitespace-no-wrap">{data.biderEmail
@@ -19,7 +19,7 @@ const MybidBox = ({data}) => {
               aria-hidden="true"
               className="absolute inset-0 bg-green-200 rounded-full opacity-50"
             ></span>
-            <span className="relative">active</span>
+            <span className="relative">pending</span>
           </span>
         </td>
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
