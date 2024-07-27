@@ -19,7 +19,7 @@ const MybidBox = ({data}) => {
               aria-hidden="true"
               className="absolute inset-0 bg-green-200 rounded-full opacity-50"
             ></span>
-            <span className="relative">pending</span>
+            <span className="relative">{data.state}</span>
           </span>
         </td>
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">

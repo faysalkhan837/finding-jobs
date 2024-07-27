@@ -1,10 +1,15 @@
+import axios from "axios";
+
+
 
 
 const BidRequestBox = ({requestData}) => {
 
-    const {job_title, biderEmail, deadLine, price } = requestData;
-    const handleChangeStatus = () =>{
-        
+    const {job_title, biderEmail, deadLine, price, _id, state } = requestData;
+    
+    const handleChangeStatus = (status, id) =>{
+      axios.put(`http://localhost:5000/bidingData/${id}`, {status})
+      .then(data => console.log(data.data))
     }
 
   return (
@@ -28,16 +33,16 @@ const BidRequestBox = ({requestData}) => {
               aria-hidden="true"
               className="absolute inset-0 bg-green-200 rounded-full opacity-50"
             ></span>
-            <span className="relative">active</span>
+            <span className="relative">{state? state : "pending"}</span>
           </span>
         </td>
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-          <button className="bg-green-700 p-2 rounded-lg text-white">
+          <button onClick={()=>handleChangeStatus("in progress",_id)} className="bg-green-700 p-2 rounded-lg text-white">
             Accept
           </button>
         </td>
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-          <button className="bg-red-600 p-2 rounded-lg text-white">
+          <button onClick={()=>handleChangeStatus("cancled",_id)} className="bg-red-600 p-2 rounded-lg text-white">
             Reject
           </button>
         </td>
