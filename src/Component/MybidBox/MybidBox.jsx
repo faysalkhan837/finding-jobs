@@ -1,3 +1,5 @@
+import UseStateChange from "../../Hooks/UseStateChange";
+
 const MybidBox = ({data}) => {
 
   return (
@@ -23,9 +25,12 @@ const MybidBox = ({data}) => {
           </span>
         </td>
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-          <button className="bg-blue-700 p-2 rounded-lg text-white">
-            Complete
-          </button>
+         {
+          data.state === "in progress" && 
+          <button onClick={()=>UseStateChange("complete", data?._id)} className="bg-blue-700 p-2 rounded-lg text-white">
+          Complete
+        </button>
+         }
         </td>
       </tr>
     </tbody>

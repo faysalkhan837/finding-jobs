@@ -9,7 +9,7 @@ import axios from "axios";
 const MyBid = () => {
   const [mybidData, setMybidData] = useState([])
   const {user, loading} = useContext(AuthContext);
-  const title = "Find your bids";
+  const title = "My bids";
 
   // const {data: mybidData=[]} = useQuery({ 
   //   queryKey: ["mybidData"],

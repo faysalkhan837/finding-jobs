@@ -34,8 +34,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bidrequest",
-        element: <BidRequest></BidRequest>,
-        loader: () => fetch("http://localhost:5000/bidingData")
+        element: <BidRequest></BidRequest>
+        // loader: () => fetch("http://localhost:5000/bidingData")
       },
       {
         path: "/addjob",

@@ -1,14 +1,16 @@
-import { useLoaderData } from "react-router-dom";
+
 import SectionTitle from "../../Share/SectionTitle/SectionTitle";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import BidRequestBox from "../../Component/BidRequestBox/BidRequestBox";
+import UseBidData from "../../Hooks/UseBidData";
+import { FaSpinner } from "react-icons/fa6";
 
 const BidRequest = () => {
   const title = "All request bids";
   const {user} = useContext(AuthContext);
-  const allData = useLoaderData();
-  const bidingRequestData = allData.filter(data => data.buyerEmail === user?.email)
+  const [bidData, isPending] = UseBidData();
+  const bidingRequestData = bidData?.filter(data => data.buyerEmail === user?.email)
   console.log(bidingRequestData)
   return (
     <div>
@@ -66,6 +68,7 @@ const BidRequest = () => {
                     </tr>
                   </thead>
                   {
+                    isPending? <div className="flex items-center"><FaSpinner className="animate-spin" /><h1>Loading</h1></div> :
                     bidingRequestData.map(requestData => <BidRequestBox key={requestData._id} requestData={requestData}></BidRequestBox>)
                   }
                 </table>
