@@ -1,6 +1,17 @@
-import UseStateChange from "../../Hooks/UseStateChange";
+import axios from "axios";
 
-const MybidBox = ({data}) => {
+
+const MybidBox = ({data, refetch}) => {
+
+  const handleChangeStatus = (status, id) => {
+    axios.put(`http://localhost:5000/bidingData/${id}`, { status })
+      .then(data => {
+        if(data.data.acknowledged == true){
+          refetch()
+        } 
+      })
+
+  }
 
   return (
     <tbody className="border-t-slate-300 border-t-[3px]">
@@ -27,7 +38,7 @@ const MybidBox = ({data}) => {
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
          {
           data.state === "in progress" && 
-          <button onClick={()=>UseStateChange("complete", data?._id)} className="bg-blue-700 p-2 rounded-lg text-white">
+          <button onClick={()=>handleChangeStatus("complete", data?._id)} className="bg-blue-700 p-2 rounded-lg text-white">
           Complete
         </button>
          }

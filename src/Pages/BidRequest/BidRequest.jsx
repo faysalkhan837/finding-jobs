@@ -9,9 +9,9 @@ import { FaSpinner } from "react-icons/fa6";
 const BidRequest = () => {
   const title = "All request bids";
   const {user} = useContext(AuthContext);
-  const [bidData, isPending] = UseBidData();
+  const [bidData, isPending, refetch] = UseBidData();
   const bidingRequestData = bidData?.filter(data => data.buyerEmail === user?.email)
-  console.log(bidingRequestData)
+  // console.log(bidingRequestData)
   return (
     <div>
       <div>
@@ -68,8 +68,8 @@ const BidRequest = () => {
                     </tr>
                   </thead>
                   {
-                    isPending? <div className="flex items-center"><FaSpinner className="animate-spin" /><h1>Loading</h1></div> :
-                    bidingRequestData.map(requestData => <BidRequestBox key={requestData._id} requestData={requestData}></BidRequestBox>)
+                    isPending? <FaSpinner className="animate-spin" /> :
+                    bidingRequestData.map(requestData => <BidRequestBox key={requestData._id} requestData={requestData} refetch={refetch}></BidRequestBox>)
                   }
                 </table>
               </div>

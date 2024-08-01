@@ -1,16 +1,19 @@
-// import axios from "axios";
-import UseStateChange from "../../Hooks/UseStateChange";
-import "react-step-progress-bar/styles.css";
+import axios from "axios";
 import { ProgressBar } from "react-step-progress-bar";
+import "react-step-progress-bar/styles.css";
 
-const BidRequestBox = ({ requestData }) => {
 
+const BidRequestBox = ({ requestData, refetch }) => {
   const { job_title, biderEmail, deadLine, price, _id, state } = requestData;
 
-  // const handleChangeStatus = (status, id) =>{
-  //   axios.put(`http://localhost:5000/bidingData/${id}`, {status})
-  //   .then(data => console.log(data.data))
-  // }
+  const handleChangeStatus = (status, id) => {
+    axios.put(`http://localhost:5000/bidingData/${id}`, { status })
+      .then(data => {
+        if (data.data.acknowledged == true) {
+          refetch()
+        }
+      })
+  }
 
   return (
     <tbody className="border-t-[3px] border-t-slate-300">
@@ -38,27 +41,27 @@ const BidRequestBox = ({ requestData }) => {
         </td>
         {
           state === "cancled" ?
-            <div>
+            <td>
               <ProgressBar
                 percent={100}
                 filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
               />
-            </div>
+            </td>
+            
             :
             <>
               <td className="px-5 py-4 text-sm bg-white text-center border-gray-200">
-                <button onClick={() => UseStateChange("in progress", _id)} className="bg-green-700 p-2 rounded-lg text-white">
+                <button onClick={() => handleChangeStatus("in progress", _id)} className="bg-green-700 p-2 rounded-lg text-white">
                   Accept
                 </button>
               </td>
               <td className="px-5 py-4 text-sm bg-white text-center border-gray-200 max-w-max">
-                <button onClick={() => UseStateChange("cancled", _id)} className="bg-red-600 p-2 rounded-lg text-white">
+                <button onClick={() => handleChangeStatus("cancled", _id)} className="bg-red-600 p-2 rounded-lg text-white">
                   Reject
                 </button>
               </td>
             </>
         }
-
       </tr>
     </tbody>
   );

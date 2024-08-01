@@ -1,32 +1,25 @@
 import { FaSpinner } from "react-icons/fa6";
 import SectionTitle from "../../Share/SectionTitle/SectionTitle";
 import MybidBox from "../../Component/MybidBox/MybidBox";
-// import { useQuery } from "@tanstack/react-query";
-import { useContext, useEffect, useState} from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import axios from "axios";
+import UseBidData from "../../Hooks/UseBidData";
 
 const MyBid = () => {
-  const [mybidData, setMybidData] = useState([])
-  const {user, loading} = useContext(AuthContext);
+  // const [mybidData, setMybidData] = useState([])
+  const {user} = useContext(AuthContext);
+  const [bidData, isPending, refetch] = UseBidData();
+  const mybidData = bidData.filter(data => data.biderEmail === user.email)
   const title = "My bids";
 
-  // const {data: mybidData=[]} = useQuery({ 
-  //   queryKey: ["mybidData"],
-  //   queryFn: async () =>{
-  //     const res = axios.get(`http://localhost:5000/bidingData?email=${user?.email}`)
-  //     return res.data;
-  //   }
-  // })
-
-useEffect(()=>{
-  axios.get(`http://localhost:5000/bidingData?email=${user?.email}`)
-  .then(res => setMybidData(res.data))
-  .catch(error =>console.log(error))
-},[user])
+// useEffect(()=>{
+//   axios.get(`http://localhost:5000/bidingData?email=${user?.email}`)
+//   .then(res => setMybidData(res.data))
+//   .catch(error =>console.log(error))
+// },[user])
   
-console.log(mybidData)
 
+console.log(mybidData)
 
 
   return (
@@ -75,8 +68,8 @@ console.log(mybidData)
                     </tr>
                   </thead>
                   {
-                    loading? <FaSpinner className="animate-spin"/> : 
-                    mybidData.map(data => <MybidBox key={data._id} data={data}></MybidBox>)
+                    isPending? <FaSpinner className="animate-spin"/> : 
+                    mybidData.map(data => <MybidBox key={data._id} data={data} refetch={refetch}></MybidBox>)
                   }
                 </table>
               </div>
